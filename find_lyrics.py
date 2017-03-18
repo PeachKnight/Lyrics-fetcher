@@ -13,7 +13,6 @@ def lyrics_fetcher(url):
 
     for item in lyrics:
         empty_list.append(item.text)#cuts more fat from the now unicode
-
     lyrics_uni = '\n'.join(empty_list)#converts the empty_list into unicode str
     lyrics_str = unicodedata.normalize('NFKD', lyrics_uni).encode('ascii', 'ignore')#transforms the unicode to string
     return lyrics_str
@@ -23,8 +22,6 @@ def url_finder():
     and generates a URL accordingly"""
     name_of_song = "-".join((raw_input("please enter the name of the song: ")).lower().split())
     name_of_artist = "-".join((raw_input("please enter the name of the artist: ")).lower().split())
-    #name_of_song = "-".join(name_of_song.split())
-    #name_of_artist = "-".join(name_of_artist.split())
     url_get = []
     url_get.append(name_of_song)
     url_get.append(name_of_artist)
@@ -32,6 +29,5 @@ def url_finder():
     url_get = ("http://www.metrolyrics.com/" + url_get.replace(", ", "-") + ".html")
     return url_get
 
-#url_finder()
+
 print lyrics_fetcher(url_finder())
-#print lyrics_fetcher("http://www.metrolyrics.com/shape-of-you-lyrics-ed-sheeran.html")
